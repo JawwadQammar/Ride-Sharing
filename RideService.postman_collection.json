@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "cfa4c1b6-2ed5-44a1-9461-0ed4743d603d",
+		"name": "RideService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21971048"
+	},
+	"item": [
+		{
+			"name": "Save Driver",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Alpesh Desai\",\r\n  \"licenseNumber\": \"SJFLKJDKLKFD\",\r\n  \"vehicleModel\": \"Toyota\"\r\n}"
+				},
+				"url": "http://localhost:8082/driver/"
+			},
+			"response": []
+		},
+		{
+			"name": "Save Passenger",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"name\": \"Mukesh Desai\",\r\n  \"email\": \"test@gmail.com\",\r\n  \"phone\": \"98989898\"\r\n}"
+				},
+				"url": "http://localhost:8081/passenger/"
+			},
+			"response": []
+		},
+		{
+			"name": "Ride Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"passengerId\": 1,\r\n  \"driverId\": 1,\r\n  \"startLocation\": \"Test 1\",\r\n  \"endLocation\": \"Test 2\"\r\n}"
+				},
+				"url": "http://localhost:8081/passenger/rides/request-ride"
+			},
+			"response": []
+		}
+	]
+}
