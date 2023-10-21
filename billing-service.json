@@ -1,0 +1,185 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "OpenAPI definition",
+		"version": "v0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8083/billing",
+			"description": "Generated server url"
+		}
+	],
+	"paths": {
+		"/{billingId}": {
+			"get": {
+				"tags": [
+					"billing-controller"
+				],
+				"operationId": "getBilling",
+				"parameters": [
+					{
+						"name": "billingId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/BillingDTO"
+								}
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"billing-controller"
+				],
+				"operationId": "updateBilling",
+				"parameters": [
+					{
+						"name": "billingId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BillingDTO"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/BillingDTO"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/": {
+			"get": {
+				"tags": [
+					"billing-controller"
+				],
+				"operationId": "getAllBillings_1",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/BillingDTO"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"billing-controller"
+				],
+				"operationId": "createBilling_1",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BillingDTO"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/BillingDTO"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test": {
+			"get": {
+				"tags": [
+					"test-controller"
+				],
+				"operationId": "getTest",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"BillingDTO": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"passengerId": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"driverId": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"rideDistance": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalAmount": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			}
+		}
+	}
+}

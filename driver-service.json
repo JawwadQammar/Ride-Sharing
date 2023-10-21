@@ -1,0 +1,178 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "OpenAPI definition",
+		"version": "v0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8082/driver",
+			"description": "Generated server url"
+		}
+	],
+	"paths": {
+		"/{driverId}": {
+			"get": {
+				"tags": [
+					"driver-controller"
+				],
+				"operationId": "getDriver",
+				"parameters": [
+					{
+						"name": "driverId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/DriverDTO"
+								}
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"driver-controller"
+				],
+				"operationId": "updateDriver",
+				"parameters": [
+					{
+						"name": "driverId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DriverDTO"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/DriverDTO"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/": {
+			"get": {
+				"tags": [
+					"driver-controller"
+				],
+				"operationId": "getAllDrivers_1",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/DriverDTO"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"driver-controller"
+				],
+				"operationId": "createDriver_1",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DriverDTO"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/DriverDTO"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test": {
+			"get": {
+				"tags": [
+					"test-controller"
+				],
+				"operationId": "getTest",
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"DriverDTO": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"format": "int64"
+					},
+					"name": {
+						"type": "string"
+					},
+					"licenseNumber": {
+						"type": "string"
+					},
+					"vehicleModel": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}
