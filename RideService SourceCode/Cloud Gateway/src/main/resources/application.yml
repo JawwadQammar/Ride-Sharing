@@ -1,0 +1,25 @@
+server:
+  port: 9191
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+spring:
+  application:
+    name: CLOUD-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: PASSENGER-MANAGEMENT
+          uri: lb://PASSENGER-MANAGEMENT
+          predicates:
+            - Path=/passenger/**
+        - id: BILLING-MANAGEMENT
+          uri: lb://BILLING-MANAGEMENT
+          predicates:
+            - Path=/billing/**
+        - id: DRIVER-MANAGEMENT
+          uri: lb://DRIVER-MANAGEMENT
+          predicates:
+            - Path=/driver/**
